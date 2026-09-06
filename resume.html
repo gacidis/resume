@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Gacidis Chamchuen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-color: #bdc3c7;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-statement {
+            font-size: 1.05em;
+            font-style: italic;
+            max-width: 600px;
+            margin: 20px auto 0;
+            opacity: 0.95;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-bg);
+            padding: 25px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .contact-item strong {
+            color: var(--text-dark);
+            display: block;
+            font-size: 0.9em;
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        /* Experience */
+        .experience-item {
+            background: var(--light-bg);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+        }
+
+        .experience-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .experience-item .position {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .experience-item .description {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 10px 0 0 0;
+        }
+
+        /* Education */
+        .education-item {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+        }
+
+        .education-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .education-item .school {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Interests */
+        .interests-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .interest-item {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .interest-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .contact-section {
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .profile-statement {
+                font-size: 1em;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: var(--white);
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+
+            .header {
+                padding: 30px 40px;
+            }
+        }
+
+        /* Scroll Animation */
+        .section {
+            opacity: 0;
+            animation: fadeInSection 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Gacidis Chamchuen</h1>
+            <p class="profile-statement">
+                Enthusiastic Economics student who enjoys learning, solving problems, and working with people. 
+                Friendly and adaptable, with the ability to collaborate effectively in diverse environments. 
+                Passionate about gaining new experiences and contributing with a positive attitude and a strong sense of responsibility.
+            </p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <strong>Phone</strong>
+                    <p>+66 099-999-9999</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <strong>Email</strong>
+                    <p>gacidis@gmail.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <strong>Location</strong>
+                    <p>Bangna, Bangkok, Thailand</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Work Experience Section -->
+            <div class="section">
+                <h2 class="section-title">💼 Work Experience</h2>
+                
+                <div class="experience-item">
+                    <h3>Front Office Department</h3>
+                    <div class="position">Bellboy Intern</div>
+                    <div class="description">
+                        • Assisted guests with luggage and check-in/check-out services<br>
+                        • Provided excellent customer service and hospitality<br>
+                        • Handled guest inquiries with professionalism and courtesy
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Processed Food Factory</h3>
+                    <div class="position">Marketing Department Intern</div>
+                    <div class="description">
+                        • Supported marketing team in various promotional activities<br>
+                        • Gained experience in food industry marketing strategies<br>
+                        • Assisted in product development and market analysis
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="section">
+                <h2 class="section-title">🎓 Education</h2>
+                
+                <div class="education-item">
+                    <h3>University of the Thai Chamber of Commerce</h3>
+                    <div class="school">School of Economics</div>
+                    <div class="description" style="margin-top: 10px;">
+                        Currently pursuing degree in Economics with focus on economic analysis and business principles
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interests & Hobbies Section -->
+            <div class="section">
+                <h2 class="section-title">🌟 Interests & Hobbies</h2>
+                
+                <div class="interests-container">
+                    <div class="interest-item">
+                        🤝 Volunteering & University Activities
+                    </div>
+                    <div class="interest-item">
+                        🎧 Listening to Podcasts
+                    </div>
+                    <div class="interest-item">
+                        🎬 Watching Documentaries
+                    </div>
+                    <div class="interest-item">
+                        📚 Economics & Business Learning
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Gacidis Chamchuen | All Rights Reserved | Bangna, Bangkok, Thailand</p>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-item, .education-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Print function
+        function printResume() {
+            window.print();
+        }
+
+        // Add keyboard shortcut for print (Ctrl+P or Cmd+P)
+        document.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
+                event.preventDefault();
+                printResume();
+            }
+        });
+    </script>
+</body>
+</html>
